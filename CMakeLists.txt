@@ -3,4 +3,4 @@ project(detab C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(detab main.c)
+add_executable(detab src/main.c)
