@@ -16,7 +16,7 @@ void detab(char s[]) {
             ++t;
         }
     }
-    for (int i = 0; i <= MAXLINE-1; ++i) {
+    for (int i = 0; i <= t; ++i) {
         s[i] = temp[i];
     }
     s[t] = '\n';
