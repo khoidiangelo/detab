@@ -7,7 +7,7 @@ int main(void) {
     char line[MAXLINE];
     int lengthline = readline(line, MAXLINE);
     if (lengthline != 0) {
-        detab(line);
+        lengthline = detab(line, lengthline);
         printf("length: %d\n%s", lengthline, line);
     }
     return 0;

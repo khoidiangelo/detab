@@ -1,24 +1,16 @@
-#include <stdio.h>
 #define TABSTOP 4
-#define MAXLINE 1000
-
-void detab(char s[]) {
-    char temp[MAXLINE];
-    int t = 0;
-    for (int i = 0; s[i] != '\n' && s[i] != EOF; ++i) {
+int detab(char s[], int limit) {
+    for (int i = 0; i < limit; ++i) {
         if (s[i] == '\t') {
-            for (int j = 0; j < TABSTOP; ++j) {
-                temp[t+j] = ' ';
+            for (int j = limit + TABSTOP; j > i; --j) {
+                s[j] = s[j-TABSTOP+1];
             }
-            t += TABSTOP;
-        } else {
-            temp[t] = s[i];
-            ++t;
+            for (int j = i; j < i+TABSTOP; ++j) {
+                s[j] = ' ';
+            }
+            limit += TABSTOP;
         }
     }
-    for (int i = 0; i <= t; ++i) {
-        s[i] = temp[i];
-    }
-    s[t] = '\n';
-    s[t+1] = '\0';
+    s[limit] = '\0';
+    return limit;
 }
